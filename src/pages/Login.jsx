@@ -1,10 +1,12 @@
-import React, { use, useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate  } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { toast } from 'react-toastify';
 import { FaRegEye  } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa6";
+import useAuth from '../hooks/useAuth';
 const Login = () => {
+    const { signInEmailPassword,signInGoogle,setLoading } = useAuth();
     const [isOpen,setIsOpen] = useState(false);
     const [error, setError] = useState('');
     const location = useLocation();

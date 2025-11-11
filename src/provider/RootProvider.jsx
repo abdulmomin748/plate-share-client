@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthProvider from './AuthProvider';
+import { AuthProvider } from './AuthProvider';
 
 const RootProvider = ({children}) => {
     return (

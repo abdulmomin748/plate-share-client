@@ -5,8 +5,10 @@ import { IoIosArrowDown } from 'react-icons/io';
 import {  FaUser } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
 import { toast } from 'react-toastify';
+import useAuth from '../hooks/useAuth';
 const Header = () => {
-    const user = ''
+    const {user, logOutUser} = useAuth();
+
     const [isOpen,setIsOpen] = useState(false);
     const link = (
         <>
@@ -31,13 +33,13 @@ const Header = () => {
     }, []);
 
     const handleLogout = () => {
-        // logOutUser()
-        // .then(() => {
-        //     toast.success('Logout Successfully!')
-        // })
-        // .catch(() => {
-        //     // console.log(error.message);
-        // })
+        logOutUser()
+        .then(() => {
+            toast.success('Logout Successfully!')
+        })
+        .catch(() => {
+            // console.log(error.message);
+        })
     }
     
     return (

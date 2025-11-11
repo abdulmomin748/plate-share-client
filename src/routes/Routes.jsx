@@ -6,6 +6,10 @@ import Register from "../pages/Register";
 import MainLayout from "../layout/MainLayout.jsx";
 import AvailableFoods from "../pages/AvailableFoods.jsx";
 import Login from "../pages/Login.jsx";
+import PrivateRoute from "./PrivateRoute.jsx";
+import AddFood from "../pages/AddFood.jsx";
+import ManageMyFoods from "../pages/ManageMyFoods.jsx";
+import MyFoodRequest from "../pages/MyFoodRequest.jsx";
 
  const router = createBrowserRouter([
     {
@@ -28,6 +32,24 @@ import Login from "../pages/Login.jsx";
             {
                 path: '/register',
                 element: <Register/>
+            },
+            {
+                path: '/add-food',
+                element: <PrivateRoute>
+                    <AddFood/>
+                </PrivateRoute>
+            },
+            {
+                path: '/manage-my-foods',
+                element: <PrivateRoute>
+                    <ManageMyFoods/>
+                </PrivateRoute>
+            },
+            {
+                path: '/my-food-req',
+                element: <PrivateRoute>
+                    <MyFoodRequest/>
+                </PrivateRoute>
             }
         ]
     }

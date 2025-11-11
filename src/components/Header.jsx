@@ -6,6 +6,7 @@ import {  FaUser } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import useAuth from '../hooks/useAuth';
+import { FaBowlFood } from 'react-icons/fa6';
 const Header = () => {
     const {user, logOutUser} = useAuth();
 
@@ -147,17 +148,39 @@ const Header = () => {
                             {/* Menu Items */}
                             <div className="py-2">
                                 <Link
-                                to={'/myProfile'}
+                                to={'/add-food'}
                                 onClick={() => {
                                     // console.log('Profile clicked');
                                     setIsOpen(false);
                                 }}
                                 className="w-full flex items-center space-x-3 px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 transition-colors duration-150"
                                 >
-                                <FaUser className="w-4 h-4 text-slate-400" />
-                                <span>View Profile</span>
+                                <FaBowlFood className="w-4 h-4 text-slate-400" />
+                                <span>Add Food</span>
                                 </Link>
 
+                                <Link
+                                to={'/manage-my-foods'}
+                                onClick={() => {
+                                    // console.log('Profile clicked');
+                                    setIsOpen(false);
+                                }}
+                                className="w-full flex items-center space-x-3 px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 transition-colors duration-150"
+                                >
+                                <FaBowlFood className="w-4 h-4 text-slate-400" />
+                                <span>Manage My Foods</span>
+                                </Link>
+                                <Link
+                                to={'/my-food-req'}
+                                onClick={() => {
+                                    // console.log('Profile clicked');
+                                    setIsOpen(false);
+                                }}
+                                className="w-full flex items-center space-x-3 px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 transition-colors duration-150"
+                                >
+                                <FaBowlFood className="w-4 h-4 text-slate-400" />
+                                <span>My Food Requests</span>
+                                </Link>
                                 <button
                                     onClick={handleLogout}
                                     className="w-full flex items-center space-x-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors duration-150"

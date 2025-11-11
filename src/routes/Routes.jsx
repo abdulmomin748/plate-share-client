@@ -10,48 +10,59 @@ import PrivateRoute from "./PrivateRoute.jsx";
 import AddFood from "../pages/AddFood.jsx";
 import ManageMyFoods from "../pages/ManageMyFoods.jsx";
 import MyFoodRequest from "../pages/MyFoodRequest.jsx";
+import FoodDetails from "../pages/FoodDetails.jsx";
 
- const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <MainLayout />,
-        errorElement: <ErrorPage />,
-        children: [
-            {
-                index: true,
-                element: <Home />
-            },
-            {
-                path: '/available-foods',
-                element: <AvailableFoods />
-            },
-            {
-                path: '/login',
-                element: <Login />
-            },
-            {
-                path: '/register',
-                element: <Register/>
-            },
-            {
-                path: '/add-food',
-                element: <PrivateRoute>
-                    <AddFood/>
-                </PrivateRoute>
-            },
-            {
-                path: '/manage-my-foods',
-                element: <PrivateRoute>
-                    <ManageMyFoods/>
-                </PrivateRoute>
-            },
-            {
-                path: '/my-food-req',
-                element: <PrivateRoute>
-                    <MyFoodRequest/>
-                </PrivateRoute>
-            }
-        ]
-    }
-])
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/available-foods",
+        element: <AvailableFoods />,
+      },
+      {
+        path: `/foodDetails/:id`,
+        element: <FoodDetails />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/add-food",
+        element: (
+          <PrivateRoute>
+            <AddFood />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/manage-my-foods",
+        element: (
+          <PrivateRoute>
+            <ManageMyFoods />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-food-req",
+        element: (
+          <PrivateRoute>
+            <MyFoodRequest />
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+]);
 export default router;

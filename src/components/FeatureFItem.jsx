@@ -1,22 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const FeatureFItem = ({fFoodItem}) => {
-    const {
-        _id,
-        name,
-        email,
-        image,
-        foodName,
-        foodImage,
-        foodQuantity,
-        pickupLocation,
-        expireDate,
-        additionalNotes,
-        food_status
-    } = fFoodItem;
-    return (
-        <div className="max-w-sm bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-gray-200">
+const FeatureFItem = ({ fFoodItem }) => {
+  const {
+    _id,
+    name,
+    email,
+    image,
+    foodName,
+    foodImage,
+    foodQuantity,
+    pickupLocation,
+    expireDate,
+    additionalNotes,
+    food_status,
+  } = fFoodItem;
+  return (
+    <div className="max-w-sm bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-gray-200">
       {/* Food Image */}
       <img
         src={foodImage}
@@ -37,41 +37,42 @@ const FeatureFItem = ({fFoodItem}) => {
         <p className="text-gray-600 text-sm italic">{additionalNotes}</p>
 
         {/* Status */}
-        <div className='flex justify-between mt-8 mb-5'>
-            <p
-          className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${
-            food_status === "Available" ? "bg-green-100 text-green-600"
-              : 
-              "bg-red-100 text-red-600"
-          }`}
-            >
+        <div className="flex justify-between mt-8 mb-5">
+          <p
+            className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${
+              food_status === "Available"
+                ? "bg-green-100 text-green-600"
+                : "bg-red-100 text-red-600"
+            }`}
+          >
             {food_status}
-            </p>
-            <p>
-                <Link to={`/foodDetails/${_id}`} className="w-full cursor-pointer bg-green-700 hover:bg-green-800 text-white font-semibold py-3 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105">
-                <span>View Details</span>
+          </p>
+          <p>
+            <Link
+              to={`/foodDetails/${_id}`}
+              className="w-full cursor-pointer bg-green-700 hover:bg-green-800 text-white font-semibold py-3 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
+            >
+              <span>View Details</span>
             </Link>
-            </p>
+          </p>
         </div>
 
-        <div className=' border-t pt-3'>
+        <div className=" border-t pt-3">
           <h4>Donator Info: </h4>
           <div className="flex items-center gap-3 mt-3">
-          <img
-            src={image}
-            alt={name}
-            className="w-10 h-10 rounded-full object-cover"
-          />
-          <div>
-            <p className="font-semibold text-gray-800">{name}</p>
+            <img
+              src={image}
+              alt={name}
+              className="w-10 h-10 rounded-full object-cover"
+            />
+            <div>
+              <p className="font-semibold text-gray-800">{name}</p>
+            </div>
           </div>
         </div>
-        </div>
-
       </div>
     </div>
   );
 };
-
 
 export default FeatureFItem;

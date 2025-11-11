@@ -54,6 +54,20 @@ const FeatureFItem = ({fFoodItem}) => {
             </p>
         </div>
 
+        <div className=' border-t pt-3'>
+          <h4>Donator Info: </h4>
+          <div className="flex items-center gap-3 mt-3">
+          <img
+            src={image}
+            alt={name}
+            className="w-10 h-10 rounded-full object-cover"
+          />
+          <div>
+            <p className="font-semibold text-gray-800">{name}</p>
+          </div>
+        </div>
+        </div>
+
       </div>
     </div>
   );

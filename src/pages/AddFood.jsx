@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from '../hooks/useAuth';
 import useAxiosIns from '../hooks/useAxiosIns';
+import Swal from 'sweetalert2';
 
 const AddFood = () => {
     const {user} = useAuth();
@@ -14,7 +15,7 @@ const AddFood = () => {
     
 
     const handleAddFood = e => {
-        
+
         e.preventDefault();
         const name = user.displayName;
         const email = user.email;
@@ -45,7 +46,16 @@ const AddFood = () => {
 
         // post food
         axiosIns.post('/addFood', newfood)
-        .then(data => console.log(data.data))
+        .then(data => 
+        {
+            if(data.status == 200){
+                Swal.fire({
+                icon: "success",
+                title: "Your food has been saved",
+                });
+            }
+        }
+        )
         .catch(err => console.log(err))
         console.log(newfood);
         

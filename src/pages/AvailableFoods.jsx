@@ -5,13 +5,13 @@ import useAuth from '../hooks/useAuth';
 import useAxiosIns from '../hooks/useAxiosIns';
 import { Link } from 'react-router-dom';
 import FeatureFItem from '../components/FeatureFItem';
-import AvailbleFoodItem from '../components/availbleFoodItem';
+
 
 const AvailableFoods = () => {
     const axiosInstance = useAxiosIns();
     const [availbeFoods,setAvailbeFoods] = useState([]);
     useEffect(() => {
-        axiosInstance('/availbeFood')
+        axiosInstance('/availableFoods')
         .then(data => setAvailbeFoods(data.data))
     },[])
     const {loading, startLoading, stopLoading} = useAuth();
@@ -40,7 +40,7 @@ const AvailableFoods = () => {
 
             <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5'>
                 {
-                    availbeFoods.map(fFoodItem => < AvailbleFoodItem fFoodItem ={fFoodItem} />)
+                    availbeFoods.map(fFoodItem => <FeatureFItem fFoodItem={fFoodItem}/>)
                 }
             </div>
             <div className='flex justify-center pt-15'>

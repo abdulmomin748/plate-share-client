@@ -1,5 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui"{
+  themes: light --default;
+}
+body{
+  font-family: "Roboto", sans-serif;
+  color: #11224E;
+  font-size: 18px;
+}
+.c-container {
+  max-width: 1240px;     
+  width: 100%;           
+  margin: 0 auto;        
+  padding: 0 20px;       
+  box-sizing: border-box; 
+}
 
-/* font-family: "Roboto", sans-serif; */
+h1,h2,h3,h4,h5,h6{
+  font-weight: 600;
+}
+.c-nav a{
+  transition: .5s;
+  padding: 2px 5px;
+  font-size: 18px;
+}
+.c-nav a:hover,.active{
+  background-color: rgb(255, 208, 0);
+  border-radius: 3px;
+}
+
+
+
+.swiper {
+      padding-top: 50px!important;
+      padding-bottom: 50px!important;
+}
+
+ .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 600px!important;
+      height: 90vh!important;
+  }
+.swiper-button-prev, .swiper-button-next{
+  color: rgb(255, 208, 0)!important;
+}
+
+.dropdown{
+  /* position: absolute!important; */
+}
+.menu-social {
+  left: -100px!important;
+}
+.menu a{
+  padding: 7px 15px;
+}
+.Toastify__toast-theme--light, .Toastify__toast-theme--colored.Toastify__toast--default {
+    background-color: #000!important;
+    color: white!important;
+}
+  .Toastify__toast-icon {
+    color: white!important;
+}
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 40px;
+  background:linear-gradient(90deg,#000 50%,#0000 0) right/200% 100%;
+  animation: l21 2s infinite linear;
+}
+.loader::before {
+  content :"Loading...";
+  color: #0000;
+  padding: 0 5px;
+  background: inherit;
+  background-image: linear-gradient(90deg,#fff 50%,#000 0);
+  -webkit-background-clip:text;
+  background-clip:text;
+}
+
+@keyframes l21{
+  100%{background-position: left}
+}

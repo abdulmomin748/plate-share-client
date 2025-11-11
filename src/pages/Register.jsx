@@ -3,11 +3,13 @@ import { FaRegEye  } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from 'react-router';
 import { FcGoogle } from "react-icons/fc";
-import { use, useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
+import useAuth from "../hooks/useAuth";
+
 const Register = () => {
 
- 
+    const {crateUserEP, updateUserProfile, signInGoogle, setLoading} = useAuth();
     const [isOpen,setIsOpen] = useState(false);
     const [error,setError] = useState('');
     const [pError,setPError] = useState('');
@@ -41,38 +43,38 @@ const Register = () => {
             setPError('');
         }
 
-        // crateUserEP(email,password)
-        // .then((result) => {
-        //     const user = result.user;
-        //     setError('')
-        //     setPError('')
-        //     setLoading(false)
+        crateUserEP(email,password)
+        .then((result) => {
+            // const user = result.user;
+            setError('')
+            setPError('')
+            setLoading(false)
             
-        //     updateUserProfile(name,photo).then(() => {
-        //         setUser({...user, displayName: name, photoURL: photo});
-        //         setLoading(false)
-        //     })
-        //     toast.success(`Registerd successfully!`)
-        //     navigate(location.state || '/')
-        // })
-        // .catch((error) => {
-        //     const errorMessage = error.message;
-        //     setError(errorMessage)
+            updateUserProfile(name,photo).then(() => {
+                // setUser({...user, displayName: name, photoURL: photo});
+                setLoading(false)
+            })
+            toast.success(`Registerd successfully!`)
+            navigate(location.state || '/')
+        })
+        .catch((error) => {
+            const errorMessage = error.message;
+            setError(errorMessage)
             
-        // });
+        });
      }  
      
      const handleSignInGoogle = () => {
-        // signInGoogle()
-        // .then(() => {
-        //     // console.log(result.user);
-        //     toast.success(`Login successfully!`)
-        //     navigate(location.state || '/')
-        // })
-        // .catch(error => {
-        //     // console.log(error.message);
-        //     toast.error(`${error.message}`)
-        // })
+        signInGoogle()
+        .then(() => {
+            // console.log(result.user);
+            toast.success(`Login successfully!`)
+            navigate(location.state || '/')
+        })
+        .catch(error => {
+            // console.log(error.message);
+            toast.error(`${error.message}`)
+        })
      } 
 
     document.title = "Register Page";

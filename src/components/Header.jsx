@@ -9,7 +9,8 @@ import useAuth from '../hooks/useAuth';
 import { FaBowlFood } from 'react-icons/fa6';
 const Header = () => {
     const {user, logOutUser} = useAuth();
-
+    console.log(user);
+    
     const [isOpen,setIsOpen] = useState(false);
     const link = (
         <>

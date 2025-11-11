@@ -40,9 +40,9 @@ const FeatureFItem = ({fFoodItem}) => {
         <div className='flex justify-between mt-8 mb-5'>
             <p
           className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${
-            food_status === "Available"
-              ? "bg-green-100 text-green-600"
-              : "bg-red-100 text-red-600"
+            food_status === "Available" ? "bg-green-100 text-green-600"
+              : 
+              "bg-red-100 text-red-600"
           }`}
             >
             {food_status}

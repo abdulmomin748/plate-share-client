@@ -23,9 +23,9 @@ const FeaturedFood = () => {
                     }
                 </div>
                 <div className='flex justify-center pt-15'>
-                        <Link to={`/plants`} className="cursor-pointer bg-green-900 hover:bg-green-600 text-white font-semibold py-3 px-14 rounded-sm transition duration-300 ease-in-out  ">
-                            <span>Show All</span>
-                        </Link>
+                    <Link to={`/available-foods`} className="cursor-pointer bg-green-900 hover:bg-green-600 text-white font-semibold py-3 px-14 rounded-sm transition duration-300 ease-in-out  ">
+                        <span>Show All</span>
+                    </Link>
                 </div>
 
                 

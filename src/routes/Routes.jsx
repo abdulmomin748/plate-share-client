@@ -6,11 +6,11 @@ import Register from "../pages/Register";
 import MainLayout from "../layout/MainLayout.jsx";
 import AvailableFoods from "../pages/AvailableFoods.jsx";
 import Login from "../pages/Login.jsx";
-import PrivateRoute from "./PrivateRoute.jsx";
 import AddFood from "../pages/AddFood.jsx";
-import ManageMyFoods from "../pages/ManageMyFoods.jsx";
 import MyFoodRequest from "../pages/MyFoodRequest.jsx";
 import FoodDetails from "../pages/FoodDetails.jsx";
+import PrivateRoute from "./PrivateRoute.jsx";
+import ManageMyFoods from "../pages/ManageMyFoods.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +28,11 @@ const router = createBrowserRouter([
       },
       {
         path: `/foodDetails/:id`,
-        element: <FoodDetails />,
+        element: (
+          <PrivateRoute>
+            <FoodDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

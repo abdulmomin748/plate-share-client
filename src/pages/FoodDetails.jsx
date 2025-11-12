@@ -11,7 +11,7 @@ import {
 import useAxiosIns from "../hooks/useAxiosIns";
 import { Link, useParams } from "react-router-dom";
 
-export default function FoodDetailsPage() {
+const FoodDetails = () => {
   const params = useParams();
   const axiosInstance = useAxiosIns();
   const [foodItemDetails, setFoodItemDetails] = useState([]);
@@ -190,4 +190,5 @@ export default function FoodDetailsPage() {
       </div>
     </div>
   );
-}
+};
+export default FoodDetails;

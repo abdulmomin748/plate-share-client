@@ -14,7 +14,7 @@ const FeaturedFood = () => {
         <div  data-aos="fade-up" className='min-h-screen'>
             <div className='c-container'>
                 <h2 className='text-center text-5xl mb-8 pt-20'> Featured Foods </h2>
-                <p className='max-w-[700px] w-full m-auto text-center mb-5'>Discover freshly prepared meals shared by generous donors in your
+                <p className='max-w-[700px] mb-8 w-full m-auto text-center'>Discover freshly prepared meals shared by generous donors in your
                 community. Grab your favorite dishes before they’re gone!</p>
 
                 <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5'>

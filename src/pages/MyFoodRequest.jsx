@@ -104,7 +104,7 @@ const MyFoodRequest = () => {
         </div>
       </div>
       :
-        <h1 className="text-5xl max-w-6xl mx-auto mt-10  py-50">
+        <h1 className="text-5xl max-w-6xl mx-auto mt-10  px-10 py-50">
           No Data Found {user.displayName}
         </h1>
       }

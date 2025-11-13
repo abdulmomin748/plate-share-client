@@ -6,7 +6,7 @@ const FoodsRequest = ({ foodReqItm, i, handleAccept, handleReject }) => {
       <td className="px-6 py-4 text-sm text-gray-900">{index}</td>
       <td className="px-6 py-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded flex-shrink-0">
+          <div className="w-12 h-12 rounded">
             <img
               className="w-full h-full"
               src={foodReqItm?.foodImage}

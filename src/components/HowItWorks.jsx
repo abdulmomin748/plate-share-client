@@ -6,7 +6,7 @@ export default function HowItWorks() {
     <div
       data-aos="fade-up"
      data-aos-anchor-placement="center-bottom"
-      className="bg-gradient-to-b mt-10 mb-10 from-white to-gray-50 py-16 px-4 sm:px-6 lg:px-8"
+      className=" mt-10 mb-10 from-white to-gray-50 py-16 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}

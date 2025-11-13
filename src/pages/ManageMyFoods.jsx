@@ -124,7 +124,7 @@ const ManageMyFoods = () => {
     <div>
       {myFoods.length > 0 ? (
         <>
-          <h1 className="text-5xl max-w-6xl mx-auto mt-10">
+          <h1 className="text-5xl max-w-6xl px-5 mx-auto mt-10">
             My Products: {myFoods.length}
           </h1>
 

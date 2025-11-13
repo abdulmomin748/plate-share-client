@@ -90,6 +90,7 @@ const FoodDetails = () => {
             req._id === id ? { ...req, food_status: "donated" } : req
           )
         );
+        toast.success(`Food Request Accepted!`);
       })
       .catch((err) => console.log(err));
   };
@@ -105,6 +106,7 @@ const FoodDetails = () => {
             req._id === id ? { ...req, food_status: "Rejected" } : req
           )
         );
+        toast.success(`Food Request Rejected!`);
       })
       .catch((err) => console.log(err));
   };

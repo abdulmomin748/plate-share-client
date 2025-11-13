@@ -1,7 +1,7 @@
 import bgImg from '../assets/photo-1673530936001-9a62842746c7.avif';
 const Hero = () => {
     return (
-        <div>
+        <div data-aos="slide-up">
             <div
                 className="hero  bg-cover bg-center h-screen"
                 style={{

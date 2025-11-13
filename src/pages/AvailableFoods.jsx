@@ -8,9 +8,11 @@ import FeatureFItem from "../components/FeatureFItem";
 
 const AvailableFoods = () => {
   const axiosInstance = useAxiosIns();
+  const { user, loading } = useAuth();
   const [availbeFoods, setAvailbeFoods] = useState([]);
+  const [aLoading,setALoading] = useState(true);
   useEffect(() => {
-    axiosInstance("/availableFoods").then((data) => setAvailbeFoods(data.data));
+    axiosInstance("/availableFoods").then((data) => setAvailbeFoods(data.data),setALoading(false));
   }, []);
 
   // useEffect(() =>{
@@ -19,12 +21,13 @@ const AvailableFoods = () => {
   //         stopLoading();
   //     }, 700);
   // },[])
-  // if(loading){
-  //     return <div className='flex justify-center items-center h-[500px]'>
-  //             <div class="loader"></div>
-  //         </div>
-
-  // }
+  if (aLoading) {
+    return (
+      <div className="flex justify-center items-center h-[500px]">
+        <div class="loader"></div>
+      </div>
+    );
+  }
   // console.log(filterPlantItem);
 
   document.title = "Available Foods";

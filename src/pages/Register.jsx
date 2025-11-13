@@ -3,7 +3,7 @@ import { FaRegEye  } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from 'react-router';
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
 
@@ -76,7 +76,20 @@ const Register = () => {
             toast.error(`${error.message}`)
         })
      } 
-
+     const [pageLoading, setPageLoading] = useState(true);
+        useEffect(() => {
+           setTimeout(() => {
+             setPageLoading(false);
+           }, 700);
+         }, []);
+       
+         if (pageLoading) {
+           return (
+             <div className="flex justify-center items-center h-[500px]">
+               <div class="loader"></div>
+             </div>
+           );
+         }
     document.title = "Register Page";
     return (
         <div>

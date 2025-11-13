@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate  } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { toast } from 'react-toastify';
@@ -48,7 +48,20 @@ const Login = () => {
             toast.error(`${error.message}`)
         })
      }
-     
+     const [pageLoading, setPageLoading] = useState(true);
+        useEffect(() => {
+           setTimeout(() => {
+             setPageLoading(false);
+           }, 700);
+         }, []);
+       
+         if (pageLoading) {
+           return (
+             <div className="flex justify-center items-center h-[500px]">
+               <div class="loader"></div>
+             </div>
+           );
+         }
      document.title = "Login Page";
     return (
         <div>

@@ -110,6 +110,22 @@ const FoodDetails = () => {
       })
       .catch((err) => console.log(err));
   };
+  const [pageLoading, setPageLoading] = useState(true);
+     useEffect(() => {
+        setTimeout(() => {
+          setPageLoading(false);
+        }, 700);
+      }, []);
+    
+      if (pageLoading) {
+        return (
+          <div className="flex justify-center items-center h-[500px]">
+            <div class="loader"></div>
+          </div>
+        );
+      }
+  document.title = "Food Details";
+
   return (
     <div className="min-h-screen from-orange-50 to-amber-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">

@@ -4,8 +4,6 @@ import './index.css'
 import RootProvider from './provider/RootProvider.jsx'
 import { RouterProvider } from 'react-router-dom'
 import router from './routes/routes.jsx'
-import React, { useEffect } from "react";
-import AOS from "aos";
 import "aos/dist/aos.css"; 
 
 createRoot(document.getElementById('root')).render(

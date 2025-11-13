@@ -1,6 +1,6 @@
 const FoodsRequest = ({ foodReqItm, i, handleAccept, handleReject }) => {
   const index = i + 1;
-
+  
   return (
     <tr className="hover:bg-gray-50">
       <td className="px-6 py-4 text-sm text-gray-900">{index}</td>

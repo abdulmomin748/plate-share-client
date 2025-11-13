@@ -13,7 +13,7 @@ const ManageMyFoods = () => {
   const [modalInfo, setModalInfo] = useState(null);
 
   const modalRef = useRef();
-
+  
   const { user, loading } = useAuth();
   const axiosInstance = useAxiosIns();
   const [myFoods, setMyFoods] = useState([]);
@@ -37,6 +37,7 @@ const ManageMyFoods = () => {
     setModalInfo(fItem); // just set the data
   };
 
+  const [pageLoading, setPageLoading] = useState(true);
 
   console.log(modalInfo);
   
@@ -107,6 +108,21 @@ const ManageMyFoods = () => {
       }
     });
   };
+  useEffect(() => {
+    setTimeout(() => {
+      setPageLoading(false);
+    }, 700);
+  }, []);
+
+  if (pageLoading) {
+    return (
+      <div className="flex justify-center items-center h-[500px]">
+        <div class="loader"></div>
+      </div>
+    );
+  }
+  document.title = "Manage My Foods";
+
   return (
     <div>
       <h1 className="text-5xl max-w-6xl mx-auto mt-10">
@@ -115,7 +131,7 @@ const ManageMyFoods = () => {
 
       <div className="min-h-screen bg-gray-50 p-8">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-lg shadow overflow-hidden">
+          <div className="bg-white rounded-lg shadow overflow-hidden overflow-x-scroll">
             <table className="w-full">
               <thead className="bg-gray-100 border-b border-gray-200">
                 <tr>

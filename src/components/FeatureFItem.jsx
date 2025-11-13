@@ -5,7 +5,6 @@ const FeatureFItem = ({ fFoodItem }) => {
   const {
     _id,
     name,
-    email,
     image,
     foodName,
     foodImage,
@@ -34,7 +33,6 @@ const FeatureFItem = ({ fFoodItem }) => {
         <p className="text-gray-600">
           <span className="font-semibold">Expire Date:</span> {expireDate}
         </p>
-        <p className="text-gray-600 text-sm italic">{additionalNotes}</p>
 
         {/* Status */}
         <div className="flex justify-between mt-8 mb-5">

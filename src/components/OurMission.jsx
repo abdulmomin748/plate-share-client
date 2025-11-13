@@ -3,7 +3,7 @@ import { Heart, Users, Leaf } from 'lucide-react';
 const OurMission = () => {
     return (
         <div data-aos="fade-up"
-     data-aos-anchor-placement="bottom-center">
+     >
             <div className="py-16 px-4  sm:px-6 lg:px-8">
                 <div className="max-w-4xl mx-auto">
                     {/* Header */}

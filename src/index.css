@@ -3,6 +3,9 @@
 @plugin "daisyui"{
   themes: light --default;
 }
+.custom_opacity{
+  opacity: .6!important;
+}
 body{
   font-family: "Roboto", sans-serif;
   color: #11224E;

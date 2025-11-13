@@ -1,5 +1,7 @@
 🍽️ PlateShare
 
+# live site link: https://plate-share-ab047.web.app/
+
 PlateShare is a full-stack MERN (MongoDB, Express, React, Node.js) web application that connects people to share surplus food within their community — helping reduce food waste and support others in need.
 
 🚀 Features

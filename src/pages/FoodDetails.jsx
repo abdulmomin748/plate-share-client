@@ -12,14 +12,18 @@ import useAxiosIns from "../hooks/useAxiosIns";
 import { Link, useParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
+import FoodsRequest from "../components/FoodsRequest";
 const FoodDetails = () => {
-  const params = useParams();
+  const { id } = useParams();
   const modalRef = useRef();
   const { user } = useAuth();
   const axiosInstance = useAxiosIns();
   const [foodItemDetails, setFoodItemDetails] = useState([]);
+  const [foodReq, setFoodReq] = useState([]);
+  const [nId, setNid] = useState(null);
+
   useEffect(() => {
-    axiosInstance(`/foodDetails/${params.id}`).then((data) =>
+    axiosInstance(`/foodDetails/${id}`).then((data) =>
       setFoodItemDetails(data.data)
     );
   }, []);
@@ -34,21 +38,8 @@ const FoodDetails = () => {
     pickupLocation,
     expireDate,
     additionalNotes,
-    food_status,
   } = foodItemDetails;
 
-  //   const getStatusColor = (status) => {
-  //     switch (status) {
-  //       case "available":
-  //         return "bg-green-100 text-green-800";
-  //       case "requested":
-  //         return "bg-yellow-100 text-yellow-800";
-  //       case "delivered":
-  //         return "bg-blue-100 text-blue-800";
-  //       default:
-  //         return "bg-gray-100 text-gray-800";
-  //     }
-  //   };
   const handleModal = () => {
     modalRef.current.showModal();
   };
@@ -59,20 +50,66 @@ const FoodDetails = () => {
       userEmail: user.email,
       name: user.displayName,
       photoURL: user.photoURL,
-      foodId: params.id,
+      foodId: id,
+      foodImage: foodItemDetails.foodImage,
+      foodName: foodItemDetails.foodName,
       food_status: "pending",
     };
+
     axiosInstance.post(`/reqFood`, newReqForFood).then((data) => {
       if (data.data.insertedId) {
-        toast.success(`Request successfully submitted!`);
+        // setFoodReq([...foodReq, newReqForFood]);
+        toast.success(`Food Request successfully submitted!`);
+        setNid(data.data.insertedId);
         modalRef.current.close();
       }
-      console.log(data.data);
     });
   };
 
+  // get request data
+  useEffect(() => {
+    if (foodItemDetails && user?.email === foodItemDetails.email) {
+      axiosInstance(`/reqFood?id=${id}&email=${user.email}`)
+        .then((data) => setFoodReq(data.data))
+        .catch((err) => console.log(err));
+    }
+  }, [id, email]);
+
+  const handleAccept = (id) => {
+    // Request status will be changed to accepted
+    //  Food Status will be changed to donated
+    console.log(id);
+
+    axiosInstance
+      .patch(`/reqFood/${id || nId}`)
+      .then((data) => {
+        console.log(data.data);
+
+        setFoodReq((prev) =>
+          prev.map((req) =>
+            req._id === id ? { ...req, food_status: "donated" } : req
+          )
+        );
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleReject = (id) => {
+    axiosInstance
+      .patch(`/reqFoodRejected/${id || nId}`)
+      .then((data) => {
+        console.log(data.data);
+
+        setFoodReq((prev) =>
+          prev.map((req) =>
+            req._id === id ? { ...req, food_status: "Rejected" } : req
+          )
+        );
+      })
+      .catch((err) => console.log(err));
+  };
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen from-orange-50 to-amber-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-6">
@@ -217,7 +254,7 @@ const FoodDetails = () => {
             <div className="flex justify-center items-center min-h-screen bg-gray-100">
               <div className="bg-white w-[970px] rounded-2xl shadow-md p-8">
                 <h2 className="text-3xl font-semibold text-center mb-6">
-                  Update your food information
+                  Food information For Food Request
                 </h2>
 
                 <form onSubmit={(e) => handleFoodReqSubmit(e)}>
@@ -275,7 +312,7 @@ const FoodDetails = () => {
                       type="submit"
                       className="w-6/12 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-md transition duration-200 ease-in-out transform hover:scale-[1.02]"
                     >
-                      Update Food Item
+                      Submit request
                     </button>
                   </div>
                 </form>
@@ -283,8 +320,47 @@ const FoodDetails = () => {
             </div>
           </div>
         </dialog>
-        {/* Food ID */}
-        <p className="text-center text-sm text-gray-500 mt-4">Food ID: {_id}</p>
+
+        {/* Food Request Table */}
+        {foodReq.length !== 0 && (
+          <>
+            <h1 className="text-3xl md:text-4xl mt-20 mb-8 font-bold text-gray-900">
+              Food Request For This Product
+            </h1>
+            <table className="w-full">
+              <thead className="bg-gray-100 border-b border-gray-200">
+                <tr>
+                  <th className="px-6 py-3 text-left text-sm font-medium text-gray-600">
+                    Sl. No
+                  </th>
+                  <th className="px-6 py-3 text-left text-sm font-medium text-gray-600">
+                    Image
+                  </th>
+                  <th className="px-6 py-3 text-left text-sm font-medium text-gray-600">
+                    Food Name
+                  </th>
+                  <th className="px-6 py-3 text-left text-sm font-medium text-gray-600">
+                    Status
+                  </th>
+                  <th className="px-6 py-3 text-left text-sm font-medium text-gray-600">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {foodReq.map((foodReqItm, i) => (
+                  <FoodsRequest
+                    key={foodReqItm._id}
+                    foodReqItm={foodReqItm}
+                    handleAccept={handleAccept}
+                    handleReject={handleReject}
+                    i={i}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
       </div>
     </div>
   );

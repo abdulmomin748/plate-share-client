@@ -12,7 +12,10 @@ const AvailableFoods = () => {
   const [availbeFoods, setAvailbeFoods] = useState([]);
   const [aLoading,setALoading] = useState(true);
   useEffect(() => {
-    axiosInstance("/availableFoods").then((data) => setAvailbeFoods(data.data),setALoading(false));
+    axiosInstance("/availableFoods")
+    .then((data) => setAvailbeFoods(data.data),
+    setALoading(false)
+  );
   }, []);
 
   // useEffect(() =>{

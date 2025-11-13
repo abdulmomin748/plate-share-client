@@ -9,8 +9,11 @@ import { toast } from "react-toastify";
 const ManageMyFoods = () => {
   const [startDate, setStartDate] = useState(new Date());
   const formatedDate = startDate.toISOString().split("T")[0];
+
   const [modalInfo, setModalInfo] = useState(null);
+
   const modalRef = useRef();
+
   const { user, loading } = useAuth();
   const axiosInstance = useAxiosIns();
   const [myFoods, setMyFoods] = useState([]);
@@ -28,12 +31,15 @@ const ManageMyFoods = () => {
       // open modal only after data is ready
       modalRef.current.showModal();
     }
-  }, [modalInfo]); // runs whenever modalInfo changes
+  }, [modalInfo]); // runs whenever modalInfo changes  // eita bade kora jaina vai
 
   const handleModal = (fItem) => {
     setModalInfo(fItem); // just set the data
   };
 
+
+  console.log(modalInfo);
+  
   const handleFoodItemUpdate = (e) => {
     e.preventDefault();
     const foodName = e.target.fName.value;
@@ -54,15 +60,22 @@ const ManageMyFoods = () => {
 
     axiosInstance.put(`/myFoods/${modalInfo._id}`, updateFood).then((data) => {
       console.log(data.data);
-      if (data.data.modifiedCount) {
+      if (data.data.modifiedCount > 0) {
         toast.success(`Food item updated successfully!`);
-        console.log(modalInfo);
 
-        const filteredFoods = myFoods.find((fItem) => fItem._id == modalInfo._id);
-        setMyFoods([...myFoods, filteredFoods]);
+        // const filteredFoods = myFoods.find((fItem) => fItem._id == modalInfo._id);
+        // setMyFoods([...myFoods, filteredFoods]);
 
+        setMyFoods((previousFood) =>
+          previousFood.map(prevFItm => prevFItm._id === modalInfo._id ? 
+            { ...prevFItm, ...updateFood }
+              : prevFItm
+          )
+        );
         modalRef.current.close();
+
       }
+
     });
   };
 
@@ -192,7 +205,8 @@ const ManageMyFoods = () => {
                             Food Name
                           </label>
                           <input
-                            defaultValue={modalInfo?.foodName}
+                            value={modalInfo?.foodName || ""}
+                            onChange={(e) => setModalInfo({ ...modalInfo, foodName: e.target.value })}
                             type="text"
                             name="fName"
                             placeholder="Food Name..........."
@@ -208,7 +222,8 @@ const ManageMyFoods = () => {
                           Food Image
                         </label>
                         <input
-                          defaultValue={modalInfo?.foodImage}
+                          value={modalInfo?.foodImage || ""}
+                            onChange={(e) => setModalInfo({ ...modalInfo, foodImage: e.target.value })}
                           type="url"
                           name="fImage"
                           placeholder="Food Image Url..........."
@@ -222,7 +237,8 @@ const ManageMyFoods = () => {
                           Food Quantity
                         </label>
                         <input
-                          defaultValue={modalInfo?.foodQuantity}
+                          value={modalInfo?.foodQuantity || ""}
+                            onChange={(e) => setModalInfo({ ...modalInfo, foodQuantity: e.target.value })}
                           type="number"
                           name="fQuantity"
                           placeholder="Serves example people........."
@@ -236,7 +252,8 @@ const ManageMyFoods = () => {
                           Pickup Location
                         </label>
                         <input
-                          defaultValue={modalInfo?.pickupLocation}
+                          value={modalInfo?.pickupLocation || ""}
+                            onChange={(e) => setModalInfo({ ...modalInfo, pickupLocation: e.target.value })}
                           type="text"
                           name="pickLocation"
                           placeholder="City, Country......"
@@ -261,7 +278,8 @@ const ManageMyFoods = () => {
                           Additional Notes for this food item
                         </label>
                         <textarea
-                          defaultValue={modalInfo?.additionalNotes}
+                          value={modalInfo?.additionalNotes || ""}
+                            onChange={(e) => setModalInfo({ ...modalInfo, additionalNotes: e.target.value })}
                           name="fAddtionalN"
                           placeholder="Additional Notes for this food item..........."
                           rows="4"

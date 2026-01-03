@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import bgImg from "../assets/photo-1673530936001-9a62842746c7.avif";
 const Hero = () => {
   return (
-    <div data-aos="fade-down" data-aos-duration="1500">
+    <div data-aos="fade-down" data-aos-duration="1500" className="pt-24 min-h-[calc(100vh-68px)]">
       <div
           className="relative bg-cover bg-center h-screen"
           style={{ backgroundImage: `url(${bgImg})` }}
         >
     <div className="absolute inset-0 custom_opacity bg-black bg-opacity-100 z-10"></div>
 
-        <div className="hero-content text-neutral-content text-center relative z-20">
+        <div className="hero-content max-w-full text-neutral-content text-center relative z-20">
           <div className="max-w-md">
             <h1 className="text-center text-5xl mb-4 pt-20 text-green-150 text-shadow-2xs">Share Food. Build Community. Reduce Waste.</h1>
             <p className="mb-5">

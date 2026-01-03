@@ -45,7 +45,7 @@ const Header = () => {
     }
     
     return (
-        <div className='bg-[#EEEEEE] text-[#11224E]' style={{ boxShadow: '0 8px 10px -5px rgba(0, 0, 0, 0.4)' }}>
+        <div className='bg-[#EEEEEE] text-[#11224E] fixed top-0 w-full z-40' style={{ boxShadow: '0 8px 10px -5px rgba(0, 0, 0, 0.4)' }}>
         <div className='c-container'>
             <div class="navbar">
                 <div class="navbar-start text-black ">

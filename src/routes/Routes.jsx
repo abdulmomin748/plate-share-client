@@ -13,6 +13,7 @@ import PrivateRoute from "./PrivateRoute.jsx";
 import ManageMyFoods from "../pages/ManageMyFoods.jsx";
 import About from "../pages/About.jsx";
 import TermsCondition from "../pages/TermsCondition.jsx";
+import MyProfile from "../pages/MyProfile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/my-profile",
+        element: <MyProfile />,
       },
       {
         path: "/register",

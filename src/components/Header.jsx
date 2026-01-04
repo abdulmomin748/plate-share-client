@@ -178,6 +178,17 @@ const Header = () => {
                   {/* Menu Items */}
                   <div className="py-2">
                     <Link
+                      to={"/my-profile"}
+                      onClick={() => {
+                        // console.log('Profile clicked');
+                        setIsOpen(false);
+                      }}
+                      className="w-full flex items-center space-x-3 px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 transition-colors duration-150"
+                    >
+                      <FaBowlFood className="w-4 h-4 text-slate-400" />
+                      <span>My Profile</span>
+                    </Link>
+                    <Link
                       to={"/add-food"}
                       onClick={() => {
                         // console.log('Profile clicked');

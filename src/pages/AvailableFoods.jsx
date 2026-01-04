@@ -92,13 +92,7 @@ const itemsPerPage = 3;
               <option value="dry food">Dry Food</option>
               <option value="fruits">Fruits</option>
             </select>
-            {/* Location */}
-            <select className="w-full md:w-1/2 border rounded-md px-4 py-2">
-              <option>Location</option>
-              <option>Dhaka</option>
-              <option>Chattogram</option>
-              <option>Rajshahi</option>
-            </select>
+           
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 mb-20 md:grid-cols-2 gap-5">

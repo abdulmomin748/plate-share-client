@@ -157,7 +157,7 @@ const MoreHomeSec = () => {
         </div>
       </section>
       {/* 7. Newsletter / Final CTA */}
-      <section className="py-16 bg-green-50 text-white text-center px-4">
+      <section className="py-16 text-white text-center px-4">
         <h2 className="text-3xl font-semibold text-gray-600 ">
           Join PlateShare Today
         </h2>

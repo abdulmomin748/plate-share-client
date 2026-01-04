@@ -17,9 +17,9 @@ const FeaturedFood = () => {
                 <p className='max-w-[700px] mb-8 w-full m-auto text-center'>Discover freshly prepared meals shared by generous donors in your
                 community. Grab your favorite dishes before they’re gone!</p>
 
-                <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5'>
+                <div className='grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 gap-5'>
                     {
-                        fFoods.map(fFoodItem => < FeatureFItem fFoodItem ={fFoodItem} />)
+                        fFoods.map((fFoodItem,id) => < FeatureFItem key={id} fFoodItem ={fFoodItem} />)
                     }
                 </div>
                 <div className='flex justify-center pt-15'>

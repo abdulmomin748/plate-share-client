@@ -14,6 +14,8 @@ const FeatureFItem = ({ fFoodItem }) => {
     additionalNotes,
     food_status,
   } = fFoodItem;
+  console.log(fFoodItem);
+  
   return (
     <div className="max-w-sm bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-gray-200">
       {/* Food Image */}
@@ -35,22 +37,22 @@ const FeatureFItem = ({ fFoodItem }) => {
         </p>
 
         {/* Status */}
-        <div className="flex justify-between mt-8 mb-5">
+        <div className="flex items-center justify-between mt-8 mb-5">
           <p
             className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${
               food_status === "Available"
-                ? "bg-green-100 text-green-600"
-                : "bg-red-100 text-red-600"
+                ? " text-green-600"
+                : " text-red-600"
             }`}
           >
             {food_status}
           </p>
-          <p>
+          <p className="">
             <Link
               to={`/foodDetails/${_id}`}
-              className="w-full cursor-pointer bg-green-700 hover:bg-green-800 text-white font-semibold py-3 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
+              className="w-full cursor-pointer text-black hover:text-green-800 font-semibold py-3 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
             >
-              <span>View Details</span>
+              <span className="text-black text-[16px] hover:text-green-800">View Details</span>
             </Link>
           </p>
         </div>

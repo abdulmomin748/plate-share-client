@@ -26,7 +26,8 @@ const FoodDetails = () => {
     axiosInstance(`/foodDetails/${id}`).then((data) =>
       setFoodItemDetails(data.data)
     );
-  }, []);
+  }, [id,axiosInstance]);
+  console.log(foodItemDetails);
   const {
     _id,
     name,
@@ -69,7 +70,7 @@ const FoodDetails = () => {
   // get request data
   useEffect(() => {
     if (foodItemDetails && user?.email === foodItemDetails.email) {
-      axiosInstance(`/reqFood?id=${id}&email=${user.email}`)
+      axiosInstance(`/reqFood?id=${id}&email=${user?.email}`)
         .then((data) => setFoodReq(data.data))
         .catch((err) => console.log(err));
     }
@@ -127,7 +128,7 @@ const FoodDetails = () => {
   document.title = "Food Details";
 
   return (
-    <div className="min-h-screen from-orange-50 to-amber-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen mt-20 from-orange-50 to-amber-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-6">

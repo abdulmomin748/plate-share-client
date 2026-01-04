@@ -11,6 +11,8 @@ import MyFoodRequest from "../pages/MyFoodRequest.jsx";
 import FoodDetails from "../pages/FoodDetails.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import ManageMyFoods from "../pages/ManageMyFoods.jsx";
+import About from "../pages/About.jsx";
+import TermsCondition from "../pages/TermsCondition.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,17 +25,20 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/about",
+        element: <About />,
+      },
+
+      {
+        path: "/terms-conditions",
+        element: <TermsCondition />,
+      },
+      {
         path: "/available-foods",
         element: <AvailableFoods />,
       },
-      {
-        path: `/foodDetails/:id`,
-        element: (
-          <PrivateRoute>
-            <FoodDetails />
-          </PrivateRoute>
-        ),
-      },
+
+      { path: "foodDetails/:id", element: <FoodDetails /> },
       {
         path: "/login",
         element: <Login />,

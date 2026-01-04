@@ -12,7 +12,6 @@ const MainLayout = () => {
                     <Outlet />
                 <Footer />  
                 <ToastContainer  autoClose={3000} position="bottom-left"/>
-
         </div>
     );
 };

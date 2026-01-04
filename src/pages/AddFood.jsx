@@ -68,11 +68,11 @@ const AddFood = () => {
     axiosIns
       .post("/addFood", newfood)
       .then((data) => {
-        e.target.fName.value ='';
-        e.target.fImage.value='';
-        e.target.fQuantity.value='';
-        e.target.pickLocation.value='';
-        e.target.fAddtionalN.value='';
+        e.target.fName.value = "";
+        e.target.fImage.value = "";
+        e.target.fQuantity.value = "";
+        e.target.pickLocation.value = "";
+        e.target.fAddtionalN.value = "";
         if (data.status == 200) {
           Swal.fire({
             icon: "success",
@@ -86,8 +86,14 @@ const AddFood = () => {
   document.title = "Add Foods";
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className="min-h-screen bg-gray-50 pt-40 px-4">
       <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
+        <div className="mb-8">
+          <h1 className="text-3xl  font-bold text-slate-900 mb-2">
+            Add Food
+          </h1>
+          <p className="text-slate-600">Share extra food with your community. Add food name, category, quantity, pickup location, and expiration date. Make a difference today!</p>
+        </div>
         <form onSubmit={handleAddFood}>
           {/* Title and Category Row */}
           <div className=" mb-6">
@@ -171,7 +177,7 @@ const AddFood = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-md transition duration-200 ease-in-out transform hover:scale-[1.02]"
+            className="w-full  bg-gradient-to-b from-[#15b923] via-[#0a8d15] to-[#22a318] text-white font-semibold py-3 px-6 rounded-xl hover:from-green-500 hover:to-green-700 transition-all duration-200 shadow-lg cursor-pointer hover:shadow-xl flex items-center justify-center space-x-2"
           >
             Create A Food
           </button>

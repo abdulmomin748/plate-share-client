@@ -260,7 +260,7 @@ const FoodDetails = () => {
             <div className="mt-8">
               <button
                 onClick={handleModal}
-                className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+                className="w-full  bg-gradient-to-b from-[#15b923] via-[#0a8d15] to-[#22a318] text-white font-semibold py-3 px-6 rounded-xl hover:from-green-500 hover:to-green-700 transition-all duration-200 shadow-lg cursor-pointer hover:shadow-xl flex items-center justify-center space-x-2"
               >
                 Request This Food
               </button>

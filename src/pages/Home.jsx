@@ -4,6 +4,7 @@ import FeaturedFood from "../components/FeaturedFood";
 import Aos from "aos";
 import HowItWorks from "../components/HowItWorks";
 import OurMission from "../components/OurMission";
+import MoreHomeSec from "../components/MoreHomeSec";
 
 const Home = () => {
 
@@ -20,6 +21,7 @@ const Home = () => {
       <FeaturedFood />
       <HowItWorks />
       <OurMission />
+      <MoreHomeSec />
     </div>
   );
 };

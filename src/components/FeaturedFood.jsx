@@ -11,7 +11,7 @@ const FeaturedFood = () => {
         .then(data => setFFoods(data.data))
     },[])
     return (
-        <div  data-aos="fade-up" className='min-h-screen'>
+        <div  data-aos="fade-up" className='min-h-screen relative top-0 bg-gray-50'>
             <div className='c-container'>
                 <h2 className='text-center text-5xl mb-8 pt-20'> Featured Foods </h2>
                 <p className='max-w-[700px] mb-8 w-full m-auto text-center'>Discover freshly prepared meals shared by generous donors in your
